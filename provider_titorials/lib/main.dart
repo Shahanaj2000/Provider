@@ -3,12 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:provider_titorials/provider/count_provider.dart';
 import 'package:provider_titorials/provider/example_one.dart';
 import 'package:provider_titorials/provider/favouriteProvider.dart';
+import 'package:provider_titorials/provider/theme_provider.dart';
 import 'package:provider_titorials/screens/count_example.dart';
 import 'package:provider_titorials/screens/example_1.dart';
 
 import 'package:provider_titorials/why_provider.dart';
 
 import 'screens/Favourite/favourite.dart';
+import 'screens/theme_mode.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,16 +27,24 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => CountProvider()),
           ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
           ChangeNotifierProvider(create: (_) => FavouriteItemProvider()),
+          ChangeNotifierProvider(create: (_) => ThemeChanger()),
         ],
       
-      child: MaterialApp(
+      child: Builder(builder: (BuildContext context) {
+        final themeChanger = Provider.of<ThemeChanger>(context);
+        return MaterialApp(
         title: 'Flutter Demo',
+        themeMode: themeChanger.themeMode,
         theme: ThemeData(
-          
+          brightness: Brightness.light,
           primarySwatch: Colors.blue,
         ),
-        home: const Favourite(),
-      ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+        ),
+        home: const DarkTheme(),
+      );
+      }),
     );
   }
 }
