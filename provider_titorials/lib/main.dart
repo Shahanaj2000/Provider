@@ -11,6 +11,7 @@ import 'package:provider_titorials/why_provider.dart';
 
 import 'screens/Favourite/favourite.dart';
 import 'screens/theme_mode.dart';
+import 'screens/value_notifier.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home: const DarkTheme(),
+        home:  NotifyListnerScreen(),
       );
       }),
     );
