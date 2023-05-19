@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_titorials/provider/count_provider.dart';
 import 'package:provider_titorials/provider/example_one.dart';
 import 'package:provider_titorials/provider/favouriteProvider.dart';
+import 'package:provider_titorials/provider/login_authprovider.dart';
 import 'package:provider_titorials/provider/theme_provider.dart';
 import 'package:provider_titorials/screens/count_example.dart';
 import 'package:provider_titorials/screens/example_1.dart';
@@ -10,6 +11,7 @@ import 'package:provider_titorials/screens/example_1.dart';
 import 'package:provider_titorials/why_provider.dart';
 
 import 'screens/Favourite/favourite.dart';
+import 'screens/login_page.dart';
 import 'screens/theme_mode.dart';
 import 'screens/value_notifier.dart';
 
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
           ChangeNotifierProvider(create: (_) => FavouriteItemProvider()),
           ChangeNotifierProvider(create: (_) => ThemeChanger()),
+          ChangeNotifierProvider(create: (_) => AuthProvider()),
         ],
       
       child: Builder(builder: (BuildContext context) {
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home:  NotifyListnerScreen(),
+        home:  const LoginPage(),
       );
       }),
     );
